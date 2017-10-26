@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+闭包：
+是一种函数存在环境，它可以对那些本不应该存在的变量进行访问
+产生闭包：
+一个函数中有一个匿名函数，当在匿名函数中引用了父函数的变量的时候，就会创建一个闭包
+
+<script>
+    function green(name) {
+        return function (age) {
+            return age+"--"+name;
+        }
+    }
+    var blue=green("Smith");
+    console.log( blue(20) );
+
+    function f() {
+        var b="u";
+        return function () {
+            return b;
+        }
+    }
+    console.log( f()() );
+
+    var n;
+    function f1() {
+        var c="hello";
+        n=function () {
+            return c;
+        }
+    }
+    f1();
+    console.log( n() );
+
+    function f2(z) {
+        var m=function () {
+            return z;
+        }
+        z++;
+        return m;
+    }
+    var y=f2(1);
+    console.log(y());
+</script>
+</body>
+</html>
